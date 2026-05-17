@@ -2,18 +2,16 @@
 
 This repository contains a full-stack, interactive exploration of **Nonlinear Eigenvalue Problems with eigenvector dependency (NEPv)**. 
 
-*(Optional: Insert a quick demo GIF or video link here showing the vector converging)*
 
 ## 1. Project Overview & Theory
 
-In a standard linear eigenvalue problem, we solve a fixed matrix equation to find the natural resonant states of a static system:
+In a standard linear eigenvalue problem, a fixed matrix equation is solved to find the natural resonant states of a static system:
 $$A v = \lambda v$$
 
 In an **NEPv**, the matrix (or operator) depends on the eigenvector itself. The geometry of the space actively warps based on the vector's position:
 $$H(v) v = \lambda v$$
 
 **The Intuition:** This creates a massive feedback loop. The direction of $v$ changes the matrix $H$, and the new matrix $H$ dictates a brand new target direction. Solving an NEPv means finding a **Self-Consistent State**—a specific vector that generates a matrix whose principal eigenvector perfectly overlaps with the original vector itself. 
-* *Real-world application:* This math is the backbone of Quantum Chemistry (e.g., Density Functional Theory), where the electric field of an atom depends on where the electrons are, but the electrons move based on the electric field.
 
 ## 2. Visual Design Choices & Interactive Controls
 
@@ -166,7 +164,7 @@ The visual model is intentionally 2D for intuition; it does not capture many hig
 3. Simplified target direction.
 The displayed target is a teaching reference direction computed from the current iterate, not a rigorous proof of global convergence.
 
-## 5. Backend API Details (Ruby / Sinatra)
+## 6. Backend API Details (Ruby / Sinatra)
 
 The backend exposes a single stateless endpoint that takes a vector state, applies one mathematical iteration based on the chosen algorithm, and returns the new state.
 
@@ -215,21 +213,12 @@ Both solvers strictly follow the algorithm outlined in the reference paper:
 - **Newton:** Finite-difference Jacobian with direct 2×2 linear solve, matching the paper's inexact Newton approach.
 
 
-## 6. Production vs. Educational: Why Angle Sliders Beat Pure Randomness
+## 7. Project Note and References
 
-In real computational chemistry (e.g., Density Functional Theory for electron orbital calculations):
+This project was built to make the NEPv idea visible: the current vector generates a new matrix, that matrix produces a local target vector, and the algorithm relaxes toward that target step by step. The goal is to turn an abstract mathematical feedback loop into something users can watch and explore in the browser.
 
-> **Production Practice:** We rarely use pure random vectors because the failure rate is too high. We use a "smart guess" based on simpler physics—for example, using standard atomic orbitals as the initial guess for molecular orbitals. If we must use random noise, we generate a random vector and **strictly normalize it** before starting the SCF loop.
+The SCF and Newton methods implemented in this project were adapted from:
 
-For your **interview project**, the angle slider provides:
-- **Reproducibility:** You can set 45° and discuss exactly why that convergence speed differs from 30°.
-- **Educational Discovery:** Show an interviewer how you discovered the Basins of Attraction by sweeping the angle from 0° to 360°.
-- **Numerical Stability:** Unit normalization $[\cos\theta, \sin\theta]$ prevents wildly scaled matrices that would explode the solver.
+- **Linear Algebra and Its Applications** (2024): https://www.sciencedirect.com/science/article/pii/S0024379524004166
 
----
-
-## 7. References
-
-The SCF and Newton methods implemented in this project are based on:
-
-- **Linear Algebra and Its Applications** (2024). https://www.sciencedirect.com/science/article/pii/S0024379524004166
+AI helped with wording, structure, and code review. I verified the solver behavior by hand and with code through API responses, browser interaction, and convergence tests for both SCF and Newton.
