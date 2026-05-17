@@ -32,8 +32,8 @@ The visualizer is designed to move beyond a generic scatter of random numbers an
 
 **Why user control matters:** One of the biggest pitfalls of NEPv (and non-linear math in general) is that the final answer you get—or whether you get an answer at all—depends heavily on where you start. This creates **Basins of Attraction**.
 
-- **The Safe Zone:** If you start your vector within ~20 degrees of the true answer, the SCF method easily slides down into the solution.
-- **The Danger Zone:** If you start 90 degrees away, the initial matrix might become so warped that the algorithm diverges and explodes.
+- **The Safe Zone:** If you start your vector within ~20 degrees of the true answer, the SCF method usually converges quickly and smoothly.
+- **The Far-Away Zone:** Even if you start much farther away, this demo still often converges, but it may take more iterations and follow a very different path.
 
 Instead of pure randomness, the app provides a **0°–360° angle slider**. This lets you:
 - Explore how far away you can start before the algorithm breaks (engaging educational discovery).
