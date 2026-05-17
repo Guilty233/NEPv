@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap');
+
+:root {
+  color-scheme: light;
+  font-family: "Space Grotesk", "IBM Plex Sans", "Segoe UI", sans-serif;
+  background: #f5f3ea;
+  color: #1f2937;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 8% 12%, rgba(34, 197, 94, 0.16), transparent 36%),
+    radial-gradient(circle at 87% 16%, rgba(251, 146, 60, 0.14), transparent 34%),
+    linear-gradient(165deg, #f9f8f1 0%, #f4efe5 48%, #f3f7f6 100%);
+}
+
+button,
+select,
+input {
+  font: inherit;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: minmax(360px, 1fr) minmax(360px, 1fr);
+  gap: 24px;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hero h1,
+.card h2 {
+  margin: 0 0 8px;
+  font-family: "Space Grotesk", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(31, 41, 55, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 14px 34px rgba(17, 24, 39, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+.control-panel {
+  display: grid;
+  gap: 12px;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+button,
+select,
+input {
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  padding: 10px 14px;
+}
+
+button {
+  background: linear-gradient(135deg, #0f766e 0%, #1d4ed8 100%);
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.22);
+}
+
+label {
+  display: grid;
+  gap: 6px;
+}
+
+.matrix-display {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.vector-canvas {
+  width: 100%;
+  height: auto;
+}
+
+.axis {
+  stroke: #5b6473;
+  stroke-width: 2;
+}
+
+.grid-line {
+  stroke: rgba(100, 116, 139, 0.2);
+  stroke-width: 1;
+}
+
+.origin {
+  fill: #111827;
+}
+
+.current-vector {
+  stroke: #0f766e;
+  stroke-width: 4;
+}
+
+.target-vector {
+  stroke: #f97316;
+  stroke-width: 4;
+  stroke-dasharray: 8 6;
+}
+
+.current-arrow {
+  fill: #0f766e;
+}
+
+.target-arrow {
+  fill: #f97316;
+}
+
+.trajectory {
+  fill: none;
+  stroke: #334155;
+  stroke-width: 2;
+  stroke-dasharray: 4 4;
+}
+
+.trail-point {
+  fill: #0f172a;
+}
+
+.legend-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 10px;
+  color: #374151;
+  font-size: 0.9rem;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.legend-dot-target {
+  background: #f97316;
+}
+
+.legend-dot-current {
+  background: #0f766e;
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+}
